@@ -1,0 +1,22 @@
+
+.btn {
+  &+& {
+    margin-left: .2em;
+  }
+  letter-spacing: .1em;
+
+  font-size: 1.125em;
+  @include media-breakpoint-up(desktop) {
+    font-size: 1em;
+  }
+
+  &[disabled=true] {
+    background-color: $primary-50;
+    color: invert($color: $primary-50);
+  }
+
+  &:hover {
+    background-color: $text;
+    color: invert($color: $text);
+  }
+}

@@ -1,0 +1,14 @@
+// Custom.scss
+@import "./custom";
+
+@import "./font";
+@import "./colors";
+@import "./breakpoints";
+@import "./input";
+
+@import "bootstrap/scss/bootstrap";
+
+// 因為 h1~h6 會因為 rfs 引擎的關係，讓字體大小和設計稿不同，所以在此直接定義，不透過修改變數完成
+@import "./root";
+@import "./heading";
+@import "./buttons";

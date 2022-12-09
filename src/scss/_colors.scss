@@ -1,0 +1,35 @@
+$primary: #00239C;
+$primary-90: rgba($primary, 0.9);
+$primary-50: rgba($primary, 0.5);
+$primary-20: rgba($primary, 0.2);
+$primary-10: rgba($primary, 0.1);
+
+$secondary: #00C9FF;
+$secondary-10: rgba($secondary, 0.1);
+$secondary-7: rgba($secondary, 0.07);
+
+$error: #A72222;
+$support: #00AA99;
+
+$text: #242424;
+$text-80: #242424CC;
+
+$zomfast-colors: (
+  "primary": #00239C,
+  "secondary": #00C9FF,
+  "error": #A72222,
+  "support": #00AA99,
+  "text": #242424,
+);
+
+$theme-colors: map-merge($theme-colors, $zomfast-colors);
+// $colors: map-merge($colors, $zomfast-colors);
+$utilities: map-merge($utilities,
+  ("color": map-merge(map-get($utilities, "color"),
+      (values: map-merge(map-get(map-get($utilities, "color"), "values"),
+          ($zomfast-colors),
+        ),
+      ),
+    ),
+  )
+);
