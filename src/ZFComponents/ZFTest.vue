@@ -1,5 +1,18 @@
 <script setup>
 import { ref } from "vue";
+import { useSlots } from "vue";
+
+const slots = useSlots();
+
+slots.default().forEach((item) => {
+  console.log("slots", item);
+});
+
+const emit = defineEmits(["update:modelValue"]);
+function onUpdateValue(e) {
+  console.log(e.target.value);
+  emit("update:modelValue", e.target.value);
+}
 
 const props = defineProps({
   id: {
@@ -43,12 +56,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-const emit = defineEmits(["update:modelValue"]);
-function onUpdateValue(e) {
-  console.log(e.target.value);
-  emit("update:modelValue", e.target.value);
-}
 </script>
 
 <script>
@@ -58,6 +65,12 @@ export default {
 </script>
 
 <template>
+  <div class="test">
+    <div>
+      Fallthrough slots:
+      <pre>{{ Object.keys(slots) }}</pre>
+    </div>
+  </div>
   <div
     :id="props.id"
     role="group"
@@ -101,13 +114,11 @@ export default {
           'is-invalid': props.status === false,
           'is-valid': props.status === true,
         }"
-        :aria-describedby="`${props.id}__BV_description_
-      ${props.id}__BV_feedback_invalid_`"
+        :aria-describedby="`${props.id}__BV_description_ ${props.id}__BV_feedback_invalid_`"
         :placeholder="props.placeholder"
         :value="props.modelValue"
         @input="onUpdateValue"
       />
-      <!-- @input="$emit('update:modelValue', $event.target.value)" -->
       <div
         :tabindex="props.tabindex"
         :id="`${props.id}__BV_description_`"
@@ -139,5 +150,9 @@ export default {
     margin: 4px 0;
     font-family: $font-family-montserrat;
   }
+}
+
+.test {
+  border: red solid 1px;
 }
 </style>

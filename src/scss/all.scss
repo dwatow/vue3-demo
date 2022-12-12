@@ -1,10 +1,30 @@
 // Custom.scss
-@import "./custom";
 
-@import "./font";
 @import "./colors";
+
+$nav-pills-link-active-color: $primary;
+$nav-pills-link-active-bg: white;
+$nav-link-color: white;
+$nav-link-padding-y: 1rem;
+$nav-link-padding-x: 1rem;
+$nav-link-font-size: 24px;
+
+@import "./custom";
+@import "./font";
 @import "./breakpoints";
 @import "./input";
+
+
+$theme-colors: map-merge($theme-colors, $zomfast-colors);
+// $colors: map-merge($colors, $zomfast-colors);
+$utilities: map-merge($utilities,
+    ("color": map-merge(map-get($utilities, "color"),
+        (values: map-merge(map-get(map-get($utilities, "color"), "values"),
+            ($zomfast-colors),
+          ),
+        ),
+      ),
+    ));
 
 @import "bootstrap/scss/bootstrap";
 

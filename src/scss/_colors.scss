@@ -1,4 +1,4 @@
-$primary: #00239C;
+$primary: rgb(0, 35, 156);
 $primary-90: rgba($primary, 0.9);
 $primary-50: rgba($primary, 0.5);
 $primary-20: rgba($primary, 0.2);
@@ -22,14 +22,5 @@ $zomfast-colors: (
   "text": #242424,
 );
 
-$theme-colors: map-merge($theme-colors, $zomfast-colors);
-// $colors: map-merge($colors, $zomfast-colors);
-$utilities: map-merge($utilities,
-  ("color": map-merge(map-get($utilities, "color"),
-      (values: map-merge(map-get(map-get($utilities, "color"), "values"),
-          ($zomfast-colors),
-        ),
-      ),
-    ),
-  )
-);
+
+$box-shadow: 0px 0px 10px $primary-20;

@@ -10,13 +10,13 @@
     font-size: 1em;
   }
 
-  &[disabled=true] {
-    background-color: $primary-50;
-    color: invert($color: $primary-50);
-  }
+  // &[disabled=true] {
+  //   background-color: $primary-50;
+  //   color: invert($color: $primary-50);
+  // }
 
-  &:hover {
-    background-color: $text;
-    color: invert($color: $text);
-  }
+  // &:hover {
+  //   background-color: $text;
+  //   color: invert($color: $text);
+  // }
 }
