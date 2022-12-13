@@ -44,7 +44,7 @@ export default {
 
 <template>
   <button
-    class="btn rounded-pill shadow"
+    class="btn shadow"
     :style="{ minWidth: '3.5em' }"
     type="button"
     :class="`btn-${variant}`"
