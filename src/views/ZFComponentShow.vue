@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import ZFTest from "@/ZFComponents/ZFTest.vue";
 import ZFButton from "@/ZFComponents/ZFButton.vue";
 import ZFInput from "@/ZFComponents/ZFInput.vue";
 import ZFTabs from "@/ZFComponents/ZFTabs.vue";
+import ZFTimeline from "@/ZFComponents/ZFTimeline.vue";
 
 const log = console.log;
 const stringValue = ref("");
@@ -18,26 +19,30 @@ const tabs = [
   { label: "contact", content: "this is contact" },
   { label: "disabled", content: "this is disabled", disabled: true },
 ];
+
+const chris = ref(null);
+onMounted(() => {
+  console.log("chris", chris.value);
+});
 </script>
 
 <template>
   <h1>展示台</h1>
-  <pre>stringValue: {{ stringValue }}</pre>
-  <h1>Test</h1>
-  <ZFTest v-model="stringValue" @input="log">
-    <span>2342342</span>
-    <span>2342342</span>
-    <span>2342342</span>
-  </ZFTest>
-  <h1>Tabs</h1>
-  <ZFTabs :tabs="tabs" v-slot="{ content }">
-    <div>there is {{ content }}</div>
-  </ZFTabs>
-  <!-- <b-tabs content-class="mt-3">
-    <b-tab title="First" active><p>I'm the first tab</p></b-tab>
-    <b-tab title="Second"><p>I'm the second tab</p></b-tab>
-    <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
-  </b-tabs> -->
+  <div v-if="false">
+    <pre>stringValue: {{ stringValue }}</pre>
+    <h1>Test</h1>
+    <ZFTest
+      :chris="'chris'"
+      :label="`sdfa`"
+      v-model="stringValue"
+      @change="log"
+      ref="chris"
+    >
+      <span>n</span>
+    </ZFTest>
+  </div>
+  <h2>Timeline</h2>
+  <ZFTimeline></ZFTimeline>
   <h2 class="abcde">Head Title</h2>
   <h1>Headline 1<small>subtitle</small></h1>
   <h2>Headline 2<small>subtitle</small></h2>
@@ -72,6 +77,10 @@ const tabs = [
   <ZFInput v-model="stringValue" :status="false"></ZFInput>
   <ZFInput v-model="stringValue" :status="true"></ZFInput>
   <ZFInput v-model="stringValue" disabled></ZFInput>
+  <h1>Tabs</h1>
+  <ZFTabs :tabs="tabs" v-slot="{ content }">
+    <div>there is {{ content }}</div>
+  </ZFTabs>
 </template>
 
 <style lang="scss">

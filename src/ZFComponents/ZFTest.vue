@@ -1,14 +1,14 @@
 <script setup>
-import { ref } from "vue";
-import { useSlots } from "vue";
+import { useSlots, useAttrs } from "vue";
 
 const slots = useSlots();
+const attrs = useAttrs();
 
 slots.default().forEach((item) => {
   console.log("slots", item);
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits("update:modelValue");
 function onUpdateValue(e) {
   console.log(e.target.value);
   emit("update:modelValue", e.target.value);
@@ -55,6 +55,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  emits: {
+    type: Array,
+    default: () => [],
+  },
 });
 </script>
 
@@ -69,6 +73,14 @@ export default {
     <div>
       Fallthrough slots:
       <pre>{{ Object.keys(slots) }}</pre>
+    </div>
+    <div>
+      Fallthrough props:
+      <pre>{{ Object.keys(props) }}</pre>
+    </div>
+    <div>
+      Fallthrough attrs:
+      <pre>{{ Object.keys(attrs) }}</pre>
     </div>
   </div>
   <div
@@ -118,6 +130,7 @@ export default {
         :placeholder="props.placeholder"
         :value="props.modelValue"
         @input="onUpdateValue"
+        @click="$emit('change')"
       />
       <div
         :tabindex="props.tabindex"
