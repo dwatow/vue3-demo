@@ -13,6 +13,14 @@ $btn-border-radius: 50rem;
 $btn-border-radius-sm: 50rem;
 $btn-border-radius-lg: 50rem;
 
+$accordion-button-icon: url("./../assets/zomfast-accordion-icon.png");
+$accordion-button-active-icon: url("./../assets/zomfast-accordion-icon.png");
+$accordion-color: $text;
+$accordion-border-width: 1px;
+$accordion-border-color: rgba($primary, 0.8);
+$accordion-button-active-bg: white;
+$accordion-button-active-color: $text;
+
 @import "./custom";
 @import "./font";
 @import "./breakpoints";

@@ -7,6 +7,7 @@ import ZFInput from "@/ZFComponents/ZFInput.vue";
 import ZFTabs from "@/ZFComponents/ZFTabs.vue";
 import ZFTimeline from "@/ZFComponents/ZFTimeline.vue";
 import ZFCard from "@/ZFComponents/ZFCard.vue";
+import ZFAccordion from "@/ZFComponents/ZFAccordion.vue";
 
 const log = console.log;
 const stringValue = ref("");
@@ -26,6 +27,31 @@ const chris = ref(null);
 onMounted(() => {
   console.log("chris", chris.value);
 });
+
+const accordionItms = [
+  {
+    title: "Accordion Item #1",
+    content: `Placeholder content for this accordion, which is intended to
+          demonstrate the <code>.accordion-flush</code> class. This is the first
+          item's accordion body.`,
+  },
+  {
+    title: "Accordion Item #2",
+    content: `Placeholder content for this accordion, which is intended to
+          demonstrate the <code>.accordion-flush</code> class. This is the
+          second item's accordion body. Let's imagine this being filled with
+          some actual content.`,
+  },
+  {
+    title: "Accordion Item #3",
+    content: `Placeholder content for this accordion, which is intended to
+          demonstrate the <code>.accordion-flush</code> class. This is the third
+          item's accordion body. Nothing more exciting happening here in terms
+          of content, but just filling up the space to make it look, at least at
+          first glance, a bit more representative of how this would look in a
+          real-world application.`,
+  },
+];
 </script>
 
 <template>
@@ -74,6 +100,7 @@ onMounted(() => {
   <h2>2. notify bar</h2>
   <h2>3. box-flow</h2>
   <h2>4. Accordion 手風琴</h2>
+  <ZFAccordion :items="accordionItms"></ZFAccordion>
   <h2>5. NavBar</h2>
   <h2>6. Modal</h2>
   <h2>7. Graph 圖表</h2>
